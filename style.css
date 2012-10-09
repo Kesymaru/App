@@ -1,0 +1,507 @@
+body {
+	margin: 0;
+	overflow-x: hidden;
+	height: 100%;
+	background-color: #404040;
+	background-size: 100% 100%;
+	font-family: Tahoma; 
+}
+
+h1{
+	font-family: Tahoma; 
+	font-weight: bold;
+	font-size: 20px;
+}
+
+h2{
+	font-family: Tahoma; 
+	font-weight: bold;
+	font-size: 18px;
+}
+
+h3{
+	font-family: Tahoma; 
+	font-weight: normal;
+	font-size: 14px;
+}
+
+p{
+	font-family: Tahoma; 
+	font-size: 10px;
+}
+
+.left {
+	width: 80%;
+	height: 100%;
+	float: left;
+	display: inline-block;
+}
+
+.right {
+	float: right;
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.right button {
+	height: 25px;
+}
+
+/* barra superior */
+.topbar {
+	background-color: #009ae0;
+	width: 75%;
+}
+
+/* search input */
+.search {
+	text-align: center;
+	height: 70px;
+	vertical-align: middle;
+}
+
+.search input[type="text"]{
+	/*display: none;*/
+	border: none;
+
+		-o-border-radius: 20px; /*opera*/
+		-webkit-border-radius: 20px; /*chrome*/
+		-moz-border-radius: 20px; /*firefox*/
+		-ms-border-radius: 20px; /*ie 10+ */
+	border-radius: 20px;
+	font-size: 20px;
+	color: rgba(255, 255, 255, 0.5);
+
+	min-width: 30%;
+	max-width: 70%;
+	padding: 5px 15px;
+	margin-top: 20px;
+	background-color: #0372af;
+}
+
+.search img , .search input[type="submit"]{
+	/*display: none;*/
+	height: 20px;
+	margin-left: -35px;
+	vertical-align: text-bottom;
+	background-color: transparent;
+	background-image: url('images/search.png');
+	background-size: cover;
+}
+
+/* app menu */
+
+.app{
+	width: 100%;
+	display: block;
+	border-left: 1px solid rgba(3, 114, 175, 0.5);
+	height: 70px;
+	background-color: #009ae0;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.app .menuicon{
+	float: left;
+	display: inline-block;
+	text-decoration: none;
+	height: 70px;
+	border-right: 1px solid rgba(3, 114, 175, 0.5);
+	vertical-align: middle;
+	width: 25%;
+}
+
+.app .menuicon .showMenu{
+	height: 50px;
+	margin-top: 10px;
+}
+
+
+/* boton de facebook */
+.menulike img{
+	height: 50px;
+	margin-top: 10px;
+}
+
+.app h1{
+	margin: 0px;
+	color: #fff;
+	display: inline-block;
+	height: 100%;
+	padding-top: 10px;
+	vertical-align: middle;
+	margin-top: 10px;
+}
+
+.app .logo{
+	height: 40px;
+	margin-top: 15px;
+	vertical-align: middle;
+}
+
+
+/* contenido */
+
+.content {
+	width: 75%;
+	height: 100%;
+	display: block;
+}
+
+.content .vote {
+	display: none;
+	color: #fff;
+	width: 100%;
+	height: 60px;
+	vertical-align: middle;
+	background-color: #373737;
+	margin-top: 0px;
+}
+
+.content .vote img{
+	float: left;
+	margin-left: 5%;
+	height: 30px;
+	margin-top: 15px;
+}
+
+.content .vote h3{
+	display: block;
+	float: left;
+	font-weight: normal;
+	margin-top: 15px;
+	margin-left: 10px;
+	margin-bottom: 0px;
+	font-size: 30px;
+}
+
+.list {
+	background-color: #fff;
+	padding-bottom: 20px;
+}
+
+.list .populares{
+	width: 100%;
+	height: 60px;
+	vertical-align: middle;
+}
+
+.list .populares img{
+	float: left;
+	height: 30px;
+	margin-left: 5%;
+	margin-top: 15px;
+}
+
+.list .populares h3 {
+	display: block;
+	float: left;
+	font-weight: normal;
+	margin-top: 20px;
+	margin-left: 10px;
+	margin-bottom: 0px;
+	font-size: 20px;
+}
+
+.list .songs{
+	vertical-align: middle;
+	border-top: 1px solid rgba(0, 0, 0, 0.5);
+	background-color: transparent;
+	color: #000;
+	padding-top: 10%;
+	padding-bottom: 10%;
+	text-align: center;
+}
+
+.list .songs #songs{
+	display: table;
+	margin-right: auto;
+	margin-left: auto;
+	margin-bottom: 0px;
+	margin-top: 0px;
+	vertical-align: middle;
+	border: none;
+
+		-webkit-border-radius: 20px;
+		-moz-border-radius: 20px;
+		-o-border-radius: 20px;
+		-ms-border-radius: 20px;
+	border-radius: 20px;
+
+	text-align: left;
+	background-color: #ededed;
+	height: auto;
+	width: 70%;
+	cursor: pointer;
+}
+
+.list .songs #songs img {
+	float: right;
+	height: 20px;
+	margin-right: 20px;
+	margin-top: 15px;
+}
+
+.list .songs #songs h3 {
+	color: #76c2ec;
+	display: block;
+	float: left;
+	font-weight: normal;
+	margin-top: 10px;
+	margin-left: 20px;
+	margin-bottom: 10px;
+	font-size: 20px;
+}
+
+
+.list #songslist {
+	width: 70%;
+	border-top: 1px solid rgba(0, 0, 0, 0.5);
+	display: none;
+	margin-right: auto;
+	margin-left: auto;
+	padding-bottom: 15px;
+	padding-top: 15px;
+	background-color: #ededed;
+	opacity: 0.2;
+
+		-webkit-border-bottom-right-radius: 20px;
+		-webkit-border-bottom-left-radius: 20px;
+		-moz-border-radius-bottomright: 20px;
+		-moz-border-radius-bottomleft: 20px;
+	border-bottom-right-radius: 20px;
+	border-bottom-left-radius: 20px;
+}
+
+/* sidebar */
+.sidebar {
+	float: right;
+	border-collapse: collapse;
+	width: 100%;
+	height: 100%;
+	background-color: #404040;
+	color: #fff;
+	display: inline-block;
+	text-align: left;
+	color: #fff;
+
+	border-left: 1px solid rgba(55, 55, 55, 0.8);
+	border-radius: none;
+}
+
+/* home */
+.home{
+	height: 100%;
+	padding-bottom: 10%;
+}
+
+.sidebar .album{
+	display: inline-block;
+	border-bottom: 1px solid rgba(199, 199, 199, 0.2);
+	width: 100%;
+	cursor: pointer;
+}
+
+.sidebar .album:first-child{
+	padding-top: 5%;
+}
+
+.sidebar .album .cover{
+	width: 25%;
+	display: block;
+	float: left;
+	text-align: center;
+}
+
+.sidebar .album .cover img{
+	/*height: 70px;
+	margin: 10% 10%;*/
+}
+
+.sidebar .album .info{
+	width: 75%;
+	display: block;
+	float: right;
+}
+
+/* contador */
+
+.contador{
+	display: none;
+	margin-right: 5%;
+	margin-top: 2%;
+	float: right;
+	background-color: #009ae0;
+	border-radius: 20px;
+	text-align: center;
+	color: #fff;
+	padding: 5px 12px;
+}
+
+.contador h1{
+	display: inline-block;
+	margin: 0px;
+	font-size: 20px;
+	padding: 0px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+.sidebar .album .info .infosong, .sidebar .album .info .infovotos{
+	display: bloack;
+	width: 100%;
+}
+
+.sidebar .album .info .infosong img, .sidebar .album .info .infovotos img{
+	display: block;
+	float: left;
+	margin-right: 5%;
+	margin-left: 5%;
+	margin-bottom: 0px;
+	margin-top: 0px;
+	height: 30px;
+	vertical-align: middle;
+}
+
+.sidebar .album .info .infovotos{
+	margin-top: 5%;
+}
+
+.sidebar .album .info .infosong{
+	margin-top: 5%;
+}
+
+
+.sidebar .album .info .infovotos .mas{
+	display: block;
+	float: right;
+	margin-right: 10%;
+	margin-top: 5px;
+	height: 30px;
+	cursor: pointer;
+}
+
+.sidebar .album .info .infosong h2{
+	font-weight: normal;
+	margin: 0px !important;
+}
+
+.sidebar .album .info .infosong h3{
+	font-weight: normal;
+	margin: 0px !important;
+}
+
+.sidebar .album .info .infovotos p{
+	display: block;
+	font-size: 80%;
+	font-weight: normal;
+	float: left;
+}
+
+.sidebar .menuvotar{
+	background-color: #373737;
+	border-top: 1px solid #373737;
+	border-bottom: 1px solid #373737;
+	opacity: 0.5;
+	display: none;
+	width: 100%;
+	text-align: center;
+}
+
+.sidebar .menuvotar .like, 
+.sidebar .menuvotar .tweet,
+.sidebar .menuvotar .facebook{
+	display: inline-block;
+	margin-top: 2%;
+	margin-bottom: 2%;
+	width: auto;
+	/*height: 100%;*/
+	vertical-align: middle;
+}
+
+.sidebar .menuvotar .like,
+.sidebar .menuvotar .tweet{
+	margin-right: 5%;
+}
+
+.sidebar .menuvotar .like img,
+.sidebar .menuvotar .tweet img,
+.sidebar .menuvotar .facebook img{
+	display: inline-block;
+	height: 35px;
+	float: left;
+	border-right: 10px solid transparent;
+}
+
+.sidebar .menuvotar .like img:active,
+.sidebar .menuvotar .tweet img:active,
+.sidebar .menuvotar .facebook img:active{
+	display: inline-block;
+	height: 30px;
+	float: left;
+	border-right: 10px solid transparent;
+}
+
+.sidebar .menuvotar .like p, 
+.sidebar .menuvotar .tweet p,
+.sidebar .menuvotar .facebook p{
+	display: block;
+	float: left;
+	vertical-align: middle;
+	color: #fff;
+}
+
+/* boton tweet */
+#custom-tweet-button a {
+    display: block;
+    padding: 0px;
+    border: 0px solid transparent;
+    background-color: transparent;
+    color: transparent;
+ }
+
+ #custom-tweet-button iframe{
+ 	display: inline-block;
+ 	float: left;
+ 	margin-right: -60px;
+ 	margin-top: 15px;
+ 	opacity: 0;
+ }
+
+ /* errores */
+
+.error{
+	display: block;
+	border: none;
+	width: 100%;
+	vertical-align: middle;
+	margin-top: 20%;
+	padding: 5%;
+}
+
+.error h1{
+	margin: 0px;
+	text-align: center;
+}
+
+.limpiar{
+	width: 50% !important;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 10px !important;
+	margin-bottom: 5%;
+	font-size: 15px !important;
+	font-weight: bold !important;
+	padding: 10px 10px !important;
+	border: none !important;
+	color: #fff !important;
+	background-color: #0372af !important;
+
+		-o-border-radius: 15px !important; /*opera*/
+		-webkit-border-radius: 15px !important; /*chrome*/
+		-moz-border-radius: 15px !important; /*firefox*/
+		-ms-border-radius: 15px !important; /*ie 10+ */
+	border-radius: 15px !important;
+	text-align: center;
+}
