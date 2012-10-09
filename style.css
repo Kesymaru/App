@@ -62,7 +62,6 @@ p{
 }
 
 .search input[type="text"]{
-	display: none;
 	border: none;
 
 		-o-border-radius: 20px; /*opera*/
@@ -81,7 +80,6 @@ p{
 }
 
 .search img , .search input[type="submit"]{
-	display: none;
 	height: 20px;
 	margin-left: -35px;
 	vertical-align: text-bottom;
