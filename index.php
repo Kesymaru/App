@@ -22,6 +22,7 @@ if ($user) {
 	} 
 }
 
+//toma datos del logueo
 if ($user) {
 	$logoutUrl = $facebook->getLogoutUrl();
 }
@@ -30,7 +31,7 @@ if ($user) {
 $loginpage = "http://www.laquesigue.com/login.php";
 if (!$user) {
 	echo "<script type='text/javascript'>top.location.href = '$loginpage';</script>";
-        exit;
+    exit;
 }else{ //loqueado
 	
 //status 0 -> libre, 1 -> voto, 2-> artista, 3 -> busqueda
