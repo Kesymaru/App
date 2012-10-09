@@ -182,7 +182,7 @@ function showArtista($row){
 			</div>';
 
 		//menu de votar
-		echo '<div class="menuvotar" id="'.$row['id'].'">
+		/*echo '<div class="menuvotar" id="'.$row['id'].'">
 				<!-- votar -->
 				<div class="like">
 						<img src="images/votalike.png" name="like" onClick="redireccionar(\'?like='.$row['id'].' \')">
@@ -210,7 +210,7 @@ function showArtista($row){
 					<p>Facebook</p>
 				</div>-->
 
-			</div>';
+			</div>';*/
 }
 
 function contador($numero, $id){
