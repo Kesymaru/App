@@ -37,6 +37,8 @@ if ($user) {
 if (!$user) {
 	echo "<script type='text/javascript'>top.location.href = '$loginUrl';</script>";
         exit;
+}else{
+	echo "<h1>Logueado</h1>"
 }
 
 ?>
