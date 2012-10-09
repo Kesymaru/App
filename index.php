@@ -1,13 +1,44 @@
-<?php 
+<?php
 
-header ("Location: http://77digital.com/");
+require_once ('sdk/facebook.php'); // FACEBOOK PHP SDK v3.2.0-0-g98f2be1  
+require_once ('music.php');
 
-	session_start();
-	require_once('music.php');
-	$_SESSION['ip'] = $_SERVER['REMOTE_ADDR'];
-	error_reporting(E_ERROR);
+//parametro de la app paa facebook
+$facebook = new Facebook(array(
+  'appId'  => '369466053131869',
+  'secret' => '75715a48ec6547da5477fb9ef6ada8ce', 
+));
+	
+// Obtener el ID del Usuario
+$user = $facebook->getUser();
 
-//echo '<SCRIPT TYPE="text/javascript">alert (\'Su IP es: '.$_SESSION['ip'].'\');</SCRIPT>';
+if ($user) {
+	try {
+	    // errores se guardan en un archivo de texto (error_log)
+		$user_profile = $facebook->api('/me');
+	} catch (FacebookApiException $e) {
+		error_log($e);
+		$user = null;
+	} 
+}
+
+if ($user) {
+	$logoutUrl = $facebook->getLogoutUrl();
+} else {
+	$loginUrl = $facebook->getLoginUrl(     
+	//prmisos solicitados para la app       
+	array(
+          'scope' => 'email,publish_stream,user_birthday,user_location,user_work_history,user_about_me,user_hometown'
+         ));
+} 
+
+//no logueado -> pagina de logueo
+if (!$user) {
+	echo "<script type='text/javascript'>top.location.href = '$loginUrl';</script>";
+        exit;
+}else{
+//loqueado muestra la pagina
+	
 //status 0 -> libre, 1 -> voto, 2-> artista, 3 -> busqueda
 $status = 0;
 $like = '';
@@ -42,15 +73,15 @@ if (isset($_GET['like']) || isset($_GET['artista']) || isset($_GET['search'])){
 <html>
 
 <head>
-	<title>Laquesigue</title>
+	<title>77Digital</title>
 	<meta charset="utf-8" />
 	<meta id="extViewportMeta" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
 	
-	<link rel="stylesheet" href="style.css" type="text/css" media=screen>	
-	<link rel="stylesheet" href="css/jquery.mobile-1.0rc2.min.css" type="text/css" />
-	<link rel="stylesheet" href="css/main.css" type="text/css" />
+	<link rel="stylesheet" href="style.css" TYPE="text/css" MEDIA=screen>	
+	<link rel="stylesheet" href="css/jquery.mobile-1.0rc2.min.css" />
+	<link rel="stylesheet" href="css/main.css" />
 
 	<script type="text/javascript" src="js/jquery-1.6.4.min.js"></script>
 	<script type="text/javascript" src="js/jquery.mobile-1.0rc2.min.js"></script>
@@ -71,9 +102,7 @@ if (isset($_GET['like']) || isset($_GET['artista']) || isset($_GET['search'])){
 				<img src="images/appmenu.png" class="showMenu" onClick="move()" id="menu0">
 			</div>
 			<!-- logo -->
-			<a href="http://77digital.com/" target="_black">
-			<img class="logo" src="images/logo.png" ">
-			</a>
+			<img class="logo" src="images/logo.png" onClick="redireccionar('')">
 
 		</div>
 		
@@ -95,12 +124,11 @@ if (isset($_GET['like']) || isset($_GET['artista']) || isset($_GET['search'])){
 
 					case 2:
 						soloArtista($artista);
-						echo '<div class="limpiar" onClick="redireccionar(\'\')">Limpiar</div>';
 						$status = 0;
 						break;
 
 					case 3:
-						$_GET['search'] = '';
+						//$_GET['search'] = '';
 						$status = 0;
 						buscar($search); 
 						break;
@@ -117,7 +145,7 @@ if (isset($_GET['like']) || isset($_GET['artista']) || isset($_GET['search'])){
 
 		<div class="topbar">
 			<div class="search">
-				<input type="text" value="" name="search" autocomplete="on" placeholder="buscar canción">
+				<input type="text" value="" name="search" autocomplete="on" placeholder="buscar...">
 				<img src="images/search.png" id="searchimg">
 				<!-- <input type="bottom" src="images/search.png" id="searchimg" value="search" > -->
 			</div>
@@ -131,7 +159,7 @@ if (isset($_GET['like']) || isset($_GET['artista']) || isset($_GET['search'])){
 			</div>
 
 			<div class="list">
-				<div class="populares" onClick="redireccionar('')">
+				<div class="populares">
 					<img src="images/populares.png">
 					<h3> mas populares </h3>
 				</div>
@@ -158,9 +186,39 @@ if (isset($_GET['like']) || isset($_GET['artista']) || isset($_GET['search'])){
 <!-- fin formulario -->
 </form>
 
-<!-- twee -->
-	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-	</script> 
+
 </body>
 
 </html>
+<?
+
+}
+
+?>
+
+<!--
+<! html>
+<html xmlns:fb="http://www.facebook.com/2008/fbml">
+  <head>
+    <title>php-sdk 3.0.0</title>
+        <style typ="text/css">
+            html, body { width: 520px;}
+        </style>    
+  </head>
+  <body>
+    <h1>php-sdk</h1>
+    <h3>PHP Session</h3>
+      <?php foreach($_SESSION as $key=>$value){
+          echo '<strong>' . $key . '</strong> => ' . $value . '<br />';
+      }
+      ?>
+      <h3>Tu</h3>
+      <img src="https://graph.facebook.com/<?php echo $user; ?>/picture">
+      <h3>Tus datos (/me)</h3>
+      <?php foreach($user_profile as $key=>$value){
+          echo '<strong>' . $key . '</strong> => ' . $value . '<br />';
+      }
+      ?>
+  </body>
+</html>
+-->
