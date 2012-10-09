@@ -1,0 +1,145 @@
+<?php 
+	
+?>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>APP</title>
+	<meta charset="utf-8" />
+	<meta id="extViewportMeta" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<LINK REL=StyleSheet HREF="style2.css" TYPE="text/css" MEDIA=screen>
+		
+	<link rel="stylesheet" href="css/jquery.mobile-1.0rc2.min.css" />
+	<link rel="stylesheet" href="css/main.css?v=31" />
+	<script type="text/javascript" src="js/jquery-1.6.4.min.js"></script>
+	<script type="text/javascript" src="js/jquery.mobile-1.0rc2.min.js"></script>
+	<script type="text/javascript" src="js/app.js?v=30"></script>
+
+</head>
+
+<body>
+
+	<div data-role="page" class="page right" id="home">
+		<div class="app">
+			<!-- boton del menu -->
+			<a href="#" class="showMenu">
+				<img src="images/appmenu.png">
+			</a>
+			<!-- titula -->
+			<h1>77Digital</h1>
+		</div>
+
+		<div class="sidebar">
+
+			<div class="album">
+				<div class="cover">
+					<img src="images/album.png">
+				</div>
+				<div class="info">
+					<div class="infosong">
+						<img src="images/disco.png">
+						<h2>THE YEAR SUMMER ENDED IN JUNE</h2>
+						<h3>Misery Signals</h3>
+					</div>
+					<div class="infovotos">
+						<img src="images/like.png">
+						<img src="images/masDesactivo.png" onClick="memuVotar(1)" class="mas" id="boton1">
+						<p>354 votos</p>
+					</div>
+				</div>
+			</div>
+			<div class="menuvotar" id="1">
+				<div class="like">
+					<img src="images/votalike.png">
+					<p>votar por esta cancion</p>
+				</div>
+				<div class="tweet">
+					<img src="images/tweet.png">
+					<p>tweet</p>
+				</div>
+			</div>
+
+			<div class="album">
+				<div class="cover">
+					<img src="images/album.png">
+				</div>
+				<div class="info">
+					<div class="infosong">
+						<img src="images/disco.png">
+						<h2>THE YEAR SUMMER ENDED IN JUNE</h2>
+						<h3>Misery Signals</h3>
+					</div>
+					<div class="infovotos">
+						<img src="images/like.png">
+						<img src="images/masDesactivo.png" onClick="memuVotar(2)" class="mas" id="boton2">
+						<p>354 votos</p>
+					</div>
+				</div>
+			</div>
+			<div class="menuvotar" id="2">
+				<div class="like">
+					<img src="images/votalike.png">
+					<p>votar por esta cancion</p>
+				</div>
+				<div class="tweet">
+					<img src="images/tweet.png">
+					<p>tweet</p>
+				</div>
+			</div>
+
+
+		<!-- fin sidebar -->
+		</div>
+
+	<!-- fin page and home -->
+	</div>
+
+	<div class="left" id="menu">
+
+		<div class="topbar">
+			<div class="search">
+				<input type="text" name="search" autocomplete="on" 	placeholder="buscar...">
+				<img src="images/search.png" id="searchimg">
+			</div>
+		</div>
+
+		<div class="content">
+
+			<div class="vote">	
+				<img src="images/like.png">
+				<h3>vote</h3>
+			</div>
+
+			<div class="list">
+				<div class="populares">
+					<img src="images/populares.png">
+					<h3> mas populares </h3>
+				</div>
+				<div class="songs">
+
+					<div id="songs">
+						<img src="images/dropdown.png" id="dropdown">
+						<h3>artistas..</h3>
+					</div>
+
+					<div id="songslist"> 
+						LIST...<br>
+						ITEM<br>
+						ITEM<br>
+						ITEM<br>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</body>
+
+</html>

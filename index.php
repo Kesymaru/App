@@ -1,4 +1,7 @@
 <?php 
+
+header ("Location: http://77digital.com/");
+
 	session_start();
 	require_once('music.php');
 	$_SESSION['ip'] = $_SERVER['REMOTE_ADDR'];
@@ -39,15 +42,15 @@ if (isset($_GET['like']) || isset($_GET['artista']) || isset($_GET['search'])){
 <html>
 
 <head>
-	<title>77Digital</title>
+	<title>Laquesigue</title>
 	<meta charset="utf-8" />
 	<meta id="extViewportMeta" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
 	
-	<link rel="stylesheet" href="style.css" TYPE="text/css" MEDIA=screen>	
-	<link rel="stylesheet" href="css/jquery.mobile-1.0rc2.min.css" />
-	<link rel="stylesheet" href="css/main.css" />
+	<link rel="stylesheet" href="style.css" type="text/css" media=screen>	
+	<link rel="stylesheet" href="css/jquery.mobile-1.0rc2.min.css" type="text/css" />
+	<link rel="stylesheet" href="css/main.css" type="text/css" />
 
 	<script type="text/javascript" src="js/jquery-1.6.4.min.js"></script>
 	<script type="text/javascript" src="js/jquery.mobile-1.0rc2.min.js"></script>
@@ -68,7 +71,9 @@ if (isset($_GET['like']) || isset($_GET['artista']) || isset($_GET['search'])){
 				<img src="images/appmenu.png" class="showMenu" onClick="move()" id="menu0">
 			</div>
 			<!-- logo -->
-			<img class="logo" src="images/logo.png" onClick="redireccionar('')">
+			<a href="http://77digital.com/" target="_black">
+			<img class="logo" src="images/logo.png" ">
+			</a>
 
 		</div>
 		
@@ -90,11 +95,12 @@ if (isset($_GET['like']) || isset($_GET['artista']) || isset($_GET['search'])){
 
 					case 2:
 						soloArtista($artista);
+						echo '<div class="limpiar" onClick="redireccionar(\'\')">Limpiar</div>';
 						$status = 0;
 						break;
 
 					case 3:
-						//$_GET['search'] = '';
+						$_GET['search'] = '';
 						$status = 0;
 						buscar($search); 
 						break;
@@ -111,7 +117,7 @@ if (isset($_GET['like']) || isset($_GET['artista']) || isset($_GET['search'])){
 
 		<div class="topbar">
 			<div class="search">
-				<input type="text" value="" name="search" autocomplete="on" placeholder="buscar...">
+				<input type="text" value="" name="search" autocomplete="on" placeholder="buscar canción">
 				<img src="images/search.png" id="searchimg">
 				<!-- <input type="bottom" src="images/search.png" id="searchimg" value="search" > -->
 			</div>
@@ -125,7 +131,7 @@ if (isset($_GET['like']) || isset($_GET['artista']) || isset($_GET['search'])){
 			</div>
 
 			<div class="list">
-				<div class="populares">
+				<div class="populares" onClick="redireccionar('')">
 					<img src="images/populares.png">
 					<h3> mas populares </h3>
 				</div>
@@ -152,7 +158,9 @@ if (isset($_GET['like']) || isset($_GET['artista']) || isset($_GET['search'])){
 <!-- fin formulario -->
 </form>
 
-
+<!-- twee -->
+	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+	</script> 
 </body>
 
 </html>

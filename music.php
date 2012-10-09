@@ -6,11 +6,11 @@
 */
 
 $host      =    "localhost";
-$user      =    "root";
-//$pass      =    "pass";
-$tablename =    "77music";
+$user      =    "laqueusr";
+$pass      =    "Trans123@";
+$tablename =    "laquesiguedb";
 
-$conecta = mysql_connect($host,$user);
+$conecta = mysql_connect($host,$user,$pass);
 
 mysql_select_db($tablename, $conecta);
 
@@ -109,6 +109,7 @@ function soloArtista($nombre){
 
 function buscar($busca){
 	$encontro = false;
+	$resultado = 'No se encontro ningun resultado con la busqueda '.$busca;
 
 	for ($i = 0; $i <= 2; $i++){
 		if($i == 0){
@@ -148,7 +149,7 @@ function buscar($busca){
 
 //muestra formatedo el artista, requiere el arreglo de la consulta de la tabla de la base de datos
 function showArtista($row){
-		echo '<div class="album" id="album'.$row['id'].'" onClick="menuVotar(\''.$row['id'].'\')">
+		echo '<div class="album" id="album'.$row['id'].'" onClick="menuVotar('.$row['id'].')">
 				<div class="cover">';
 		//cover
 		if ($row['cover'] == 'default'){
@@ -182,25 +183,22 @@ function showArtista($row){
 
 		//menu de votar
 		echo '<div class="menuvotar" id="'.$row['id'].'">
+				<!-- votar -->
 				<div class="like">
 						<img src="images/votalike.png" name="like" onClick="redireccionar(\'?like='.$row['id'].' \')">
 						<p>votar</p>
 					
 				</div>
 				<!-- twitter -->
-				<div class="tweet" >
-					
-					<a href="http://twitter.com/intent/tweet?text=\'Voté en www.laquesigue.com para que @kurtdyer toque '.$row['cancion'].' en &#35;transcyberiano. Patrocinado por @somos77\'"  data-url="www.laquesigue.com" data-lang="es" target="_black">
-
-						<img src="images/tweet.png">
-
-					</a> 
-					
+				<div class="tweet" id="custom-tweet-button">
+					<a href="http://twitter.com/intent/tweet?text=Voté en www.laquesigue.com para que @kurtdyer toque '.$row['cancion'].' en #transcyberiano. Patrocinado por @somos77" class="twitter-share-button" data-url="www.laquesigue.com" data-lang="es" data-related="anywhereTheJavascriptAPI" data-count="none">
+						
+					</a>
+					<img src="images/tweet.png">
 
 					<p>tweet</p>
 				</div>
-
-				<!-- compartir en facebook -->
+				<!-- facebook 
 				<div class="facebook">
 				<a href="http://fb-share-control.com?u=http://www.laquesigue.com?artista='.$row['cancion'].'&amp;
 				t=La Que Sigue&amp;
@@ -210,7 +208,8 @@ function showArtista($row){
 					<img alt="Facebook" src="images/facebook.png">
 				</a>
 					<p>Facebook</p>
-				</div>
+				</div>-->
+
 			</div>';
 }
 

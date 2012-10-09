@@ -1,0 +1,239 @@
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video {
+	margin:0; padding:0; border:0; font-size:100%; font:inherit; vertical-align: baseline; }
+/* HTML5 display-role reset for older browsers */
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {display:block; }
+body {line-height:1; }
+ol,ul {list-style:none; }
+blockquote,q {quotes:none; }
+blockquote:before,blockquote:after,q:before,q:after {content:''; content:none; }
+table {border-collapse:collapse; border-spacing:0; }
+a {outline:none; text-decoration: none; }
+
+/*END RESET ---------------------------*/
+
+body {font-size:62.5%; font-family: Arial,sans-serif; background: url(../images/main_bg.jpg) repeat-x; width: 810px; margin: 0 auto; }
+body.app{
+	background: none;
+}
+
+/* ---- set sprite -------*/
+#main .info .participar, .facebook, #formulario input, #formulario .submit{
+	background: url(../images/master_card_sprite.jpg) no-repeat;
+}
+/*
+HEADER ========================> */
+header{
+	padding: 0 20px 25px;
+	overflow: hidden;
+	margin: 0 0 30px;
+}
+.logo, header h2, header p{
+	float: left;
+	height: 56px;
+	line-height: 56px;
+	color: #070707;
+	padding: 23px 0 0;
+}
+.logo{
+	background:url(../images/logo.png) no-repeat;
+	height: 56px;
+	width: 94px;
+	margin-top: 23px;
+	padding: 0;
+}
+.logo a{
+	display: block;
+	height: 100%;
+	text-indent: -9999px;
+}
+header h2{
+	margin-left: 20px;
+	font-size: 3.5em;
+	padding-right: 25px;
+	border-right: 1px solid #dbdbdb;
+}
+header p{
+	padding-left: 25px;
+	font-size: 1.3em;
+	border-left: none;
+}
+
+/* ----- header form ---------- */
+.form header p{
+	padding: 37px 0 0 25px;
+	font-size: 1.2em;
+	border-left: none;
+	width: 280px;
+	line-height: 1.2em;
+}
+/*
+SECTION  ========================> */
+
+section{
+	overflow: hidden;
+	width: 552px;
+	margin: 0 auto 30px;
+}
+#slider{
+	height: 206px;
+}
+.box{
+	float: left;
+	width: 152px;
+	height: 152px;
+}
+.box + .box{
+	margin-left: 48px;
+}
+
+/* ----- beneficios --------- */
+#box_content_beneficios{
+	width: 752px;
+}
+
+
+/*
+APP SECTION ----------------- */
+#main{
+	display: table;
+	 margin: 50px 0 0 73px;
+	 width: 707px;
+}
+#main .box{
+	float: none;
+	display: table-cell;
+	width: 224px;
+	height: 282px;
+}
+#main .info{
+	display: table-cell;
+	vertical-align: middle;
+	padding: 0 0 0 73px;
+}
+#main .info h3{
+	font-size: 2.2em;
+	text-align: center;
+	line-height: 1.4em;
+	text-transform: uppercase;
+}
+#main .info h3 span{
+	display: block;
+	color: #969696;
+}
+.facebook{
+	display: block;
+	height: 28px;
+	width: 182px;
+	text-indent: -9999px;
+	margin: 30px auto;
+}
+#main.promocional{
+	width: 758px;
+	margin: 50px 0 0 24px;
+}
+#main.promocional h3{
+	color: #969696;
+	text-align: left;
+	line-height: 1.2em;
+	font-size: 2em;
+}
+#main.promocional .info{
+	padding: 0 0 0 30px;
+}
+#main.promocional h3 span{
+	color: #000000;
+	display: inline;
+}
+#main.promocional h3 .mastercard{
+	font-weight: bold;
+}
+#main.promocional .box{
+	float: none;
+	display: table-cell;
+	width: 322px;
+	height: 290px;
+}
+#main .info .participar{
+	display: block;
+	background-position: 0 -32px;
+	height: 43px;
+	width: 129px;
+	color: #4c4c4c;
+	font-size: 1.3em;
+	text-align: center;
+	line-height: 43px;
+	margin: 70px 0 0;
+}
+
+/* ------ formulario ----------- */
+#formulario form{
+	width: 404px;
+	margin: 0 auto;
+}
+#formulario p{
+	text-align: center;
+	font-size: 1.8em;
+	margin: 0 0 30px;
+	line-height: 1.2em;
+}
+#formulario p span{
+	display: block;
+}
+#formulario input[type='text']{
+	background-position: 0 -85px;
+	height: 48px;
+	border: none;
+	margin: 0 0 18px;
+	padding: 15px 20px;
+	width: 100%;
+}
+#formulario .submit{
+	background-position: -140px -32px;
+	width: 118px;
+	height: 43px;
+	color: #4c4c4c;
+	font-size: 1.3em;
+	text-transform: uppercase;
+	float: left;
+	border: none;
+	cursor: pointer; 
+}
+#formulario .aceptar{
+	float: left;
+	margin: 0 0 0 75px;
+	width: 190px;
+	font-size: 1.3em;
+	line-height: 1.3em;
+}
+#formulario .aceptar .aceptar_check{
+	width: auto;
+}
+/*
+FOOTER =====================> */
+
+footer{
+	background: url(../images/footer_bg.jpg) repeat-x;
+	height: 83px;
+	padding: 43px 24px 0 0;
+}
+footer p{
+	float: right;
+	height: 56px;
+	width: 280px;
+	font-size: 1.3em;
+	line-height: 1.3em;
+	margin: 14px 0 0;
+}
+footer .footer_logo{
+	float: right;
+	margin-left: 21px;
+	background: url(../images/logo.png);
+	height: 56px;
+	width: 94px;
+}
+footer .footer_logo a{
+	display: block;
+	height: 100%;
+	text-indent: -9999px;
+}
+

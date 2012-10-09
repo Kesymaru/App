@@ -1,14 +1,7 @@
 $(window).load(function() {
  	
- 	//responsitive para el cover
-	$(window).resize(function() {
-		var ancho = $(".cover").width() * 0.60;
-		//var ancho = $(".menuicon").width() * 0.60;
+ 	
 
-    	$(window).width() < $('.imageCover').css('width',ancho);
-    	//location.reload();
-	});
-	
 });
 
 $(document).ready(function(){
@@ -184,9 +177,6 @@ function redireccionar(link){
 //para publicar en facebook
 function facebook(u,i,d){
 	var t = 'La Que Sigue';
-	window.open(
-        'http://fb-share-control.com?u='+u+'&amp;t='+t+'&amp;i='+i+'&amp;d='+d,
-        'sharer','toolbar=0,status=0,width=800,height=400');
+	window.open('http://fb-share-control.com?u='+u+'&amp;t='+t+'&amp;i='+i+'&amp;d='+d,'sharer','toolbar=0,status=0,width=800,height=400');
         return false;
 }
-
