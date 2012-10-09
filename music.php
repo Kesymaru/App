@@ -58,7 +58,7 @@ function voto($idCancion){
 
 	mysql_query($sql);
 	//echo '<SCRIPT TYPE="text/javascript">alert(\'El voto se ha echo.\');</SCRIPT>';
-	$link = '';
+	//$link = '';
 	echo '<SCRIPT TYPE="text/javascript">window.location = \"index.php\";</SCRIPT>';
 }
 
