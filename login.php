@@ -1,7 +1,14 @@
 <?php
+//base de datos
+$host      =    "localhost";
+$user      =    "laqueusr";
+$pass      =    "Trans123@";
+$tablename =    "laquesiguedb";
+
+$conecta = mysql_connect($host,$user,$pass);
+mysql_select_db($tablename, $conecta);
 
 require_once ('sdk/facebook.php'); // FACEBOOK PHP SDK v3.2.0-0-g98f2be1  
-require_once ('music.php');
 
 //parametro de la app paa facebook
 $facebook = new Facebook(array(
@@ -25,8 +32,8 @@ if ($user) {
 if ($user) {
 	$logoutUrl = $facebook->getLogoutUrl();
 } else {
-	$loginUrl = $facebook->getLoginUrl(     
-	//prmisos solicitados para la app       
+	//prmisos solicitados para la app
+	$loginUrl = $facebook->getLoginUrl(            
 	array(
           'scope' => 'email,publish_stream'
          ));
@@ -37,7 +44,8 @@ if (!$user) {
 	echo "<script type='text/javascript'>top.location.href = '$loginUrl';</script>";
         exit;
 }else{
-
+	//logueado
+	usuario();
 }
 
 ?>
@@ -73,5 +81,24 @@ if (!$user) {
 $home = "http://www.laquesigue.com/";
 //echo "<script type='text/javascript'>top.location.href = '$home';</script>";
 //exit;
+
+
+//revisa si exise el usuario
+function usuario(){
+	$sql = "SELECT FROM * usuarios WHERE id = "$_SESSION['id '];
+	
+	if($resultado = mysql_fetch_array($sql)){
+		echo "<script type='text/javascript'> alert('Existe'); </script>";
+	}else{
+		echo "<script type='text/javascript'> alert('No existe Grabando...'); </script>";	
+		grabar();
+	}
+}
+
+//graba datos de usuarios en base de datos
+function grabar(){
+
+}
+
 
 ?>
