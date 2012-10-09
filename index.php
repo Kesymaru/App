@@ -1,12 +1,7 @@
 <?php
 
 require_once ('sdk/facebook.php'); // FACEBOOK PHP SDK v3.2.0-0-g98f2be1  
-require_once ('music.php');
-
-//para borrar los parametros enviados desde facebook
-if($_SESSION["loqueado"] == "reload"){
-	$_SESSION["loqueado"] = true;
-}
+require_once ('music.php'); //base de datos app
 
 //parametro de la app paa facebook
 $facebook = new Facebook(array(
@@ -29,20 +24,14 @@ if ($user) {
 
 if ($user) {
 	$logoutUrl = $facebook->getLogoutUrl();
-} else {
-	$loginUrl = $facebook->getLoginUrl(     
-	//prmisos solicitados para la app       
-	array(
-          'scope' => 'email,publish_stream,user_birthday,user_location,user_work_history,user_about_me,user_hometown'
-         ));
-} 
+}
 
-//no logueado -> pagina de logueo
+//no logueado -> pagina de logueo\
+$loginpage = "http://www.laquesigue.com/login.php";
 if (!$user) {
-	echo "<script type='text/javascript'>top.location.href = '$loginUrl';</script>";
+	echo "<script type='text/javascript'>top.location.href = '$loginpage';</script>";
         exit;
 }else{ //loqueado
-$_SESSION["loqueado"] = true;
 	
 //status 0 -> libre, 1 -> voto, 2-> artista, 3 -> busqueda
 $status = 0;
