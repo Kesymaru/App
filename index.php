@@ -3,6 +3,11 @@
 require_once ('sdk/facebook.php'); // FACEBOOK PHP SDK v3.2.0-0-g98f2be1  
 require_once ('music.php');
 
+//para borrar los parametros enviados desde facebook
+if($_SESSION["loqueado"] == "reload"){
+	$_SESSION["loqueado"] = true;
+}
+
 //parametro de la app paa facebook
 $facebook = new Facebook(array(
   'appId'  => '369466053131869',
@@ -36,8 +41,8 @@ if ($user) {
 if (!$user) {
 	echo "<script type='text/javascript'>top.location.href = '$loginUrl';</script>";
         exit;
-}else{
-//loqueado muestra la pagina
+}else{ //loqueado
+$_SESSION["loqueado"] = true;
 	
 //status 0 -> libre, 1 -> voto, 2-> artista, 3 -> busqueda
 $status = 0;
