@@ -68,6 +68,8 @@ if (!$user) {
 </html>
 
 <?php
+
+//re direccion al home, esto limpia los parametros enviados por facebook via GET
 $home = "http://www.laquesigue.com/";
 echo "<script type='text/javascript'>top.location.href = '$home';</script>";
         exit;
