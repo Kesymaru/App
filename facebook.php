@@ -68,5 +68,5 @@ if (!$user) {
 </html>
 
 <?php
-header ("Location: http://77digital.com/");
+header ("Location: http://laquesigue.com");
 ?>
