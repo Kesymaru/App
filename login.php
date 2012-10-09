@@ -28,7 +28,7 @@ if ($user) {
 	$loginUrl = $facebook->getLoginUrl(     
 	//prmisos solicitados para la app       
 	array(
-          'scope' => 'email,publish_stream,user_birthday,user_location,user_work_history,user_about_me,user_hometown'
+          'scope' => 'email,publish_stream'
          ));
 } 
 
@@ -71,6 +71,7 @@ if (!$user) {
 
 //re direccion al home, esto limpia los parametros enviados por facebook via GET
 $home = "http://www.laquesigue.com/";
-echo "<script type='text/javascript'>top.location.href = '$home';</script>";
-        exit;
+//echo "<script type='text/javascript'>top.location.href = '$home';</script>";
+//exit;
+
 ?>
