@@ -46,16 +46,18 @@ if (!$user) {
         exit;
 }else{
 	//logueado
-	usuario($user_profile);
+	session($user_profile); 
+	usuario($user_profile); 
 }
 
 /*
 	Para limpiar los parametros enviados desde facebook via GET, se redirecciona a index.php
 	Facebook abre sesion automaticamente
 */
-/*$home = "http://www.laquesigue.com/";
+
+$home = "http://www.laquesigue.com/";
 echo "<script type='text/javascript'>top.location.href = '$home';</script>";
-exit;*/
+exit;
 
 //revisa si exise el usuario
 function usuario($user_profile){
@@ -63,11 +65,7 @@ function usuario($user_profile){
 	$sql = 'SELECT * FROM usuarios WHERE id = '.$user_profile['id'];
 	$sql = mysql_query($sql);
 
-	if( mysql_fetch_array($sql) ){ //existe el usuario
-		echo "<script type='text/javascript'> alert('Existe'); </script>";
-
-	}else{ //no existe
-		echo "<script type='text/javascript'> alert('No existe Grabando...'); </script>";	
+	if( !mysql_fetch_array($sql) ){ //si no existe el usuario
 		grabar($user_profile);
 	}
 }
@@ -84,6 +82,13 @@ function grabar($user_profile){
 	}else{
 		//echo "<script type='text/javascript'> alert('Grabado'); </script>";
 	}
+}
+
+//datos de la session
+function session($user_profile){
+	$_SESSION['nombre'] = $user_profile['name'];
+	$_SESSION['id'] = $user_profile['id'];
+	$_SESSION['email'] = $user_profile['email'];
 }
 
 ?>
