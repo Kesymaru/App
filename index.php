@@ -77,22 +77,22 @@ $artista = '';
 $search = '';
 
 //envio
-if (isset($_GET['like']) || isset($_GET['artista']) || isset($_GET['search'])){
+if (isset($_POST['like']) || isset($_POST['artista']) || isset($_POST['search'])){
 	
-	if(isset($_GET['like'])){
-		$like = $_GET['like'];
+	if(isset($_POST['like'])){
+		$like = $_POST['like'];
 		$status = 1;
-		//echo '<SCRIPT TYPE="text/javascript">alert (\'Voto ha '.$_GET['like'].'\');</SCRIPT>';
+		//echo '<SCRIPT TYPE="text/javascript">alert (\'Voto ha '.$_POST['like'].'\');</SCRIPT>';
 	}
-	if(isset($_GET['artista'])){
-		$artista = $_GET['artista'];
+	if(isset($_POST['artista'])){
+		$artista = $_POST['artista'];
 		$status = 2;
-		//echo '<SCRIPT TYPE="text/javascript">alert (\'Artista escojido '.$_GET['artista'].'\');</SCRIPT>';
+		//echo '<SCRIPT TYPE="text/javascript">alert (\'Artista escojido '.$_POST['artista'].'\');</SCRIPT>';
 	}
-	if(isset($_GET['search']) && $_GET['search'] != '' ){
-		$search = $_GET['search'];
+	if(isset($_POST['search']) && $_POST['search'] != '' ){
+		$search = $_POST['search'];
 		$status = 3;
-		//echo '<SCRIPT TYPE="text/javascript">alert (\'Buscando '.$_GET['search'].'\');</SCRIPT>';
+		//echo '<SCRIPT TYPE="text/javascript">alert (\'Buscando '.$_POST['search'].'\');</SCRIPT>';
 	}
 	//echo '<SCRIPT TYPE="text/javascript">alert (\'Status '.$status.'\');</SCRIPT>';
 }
@@ -100,8 +100,8 @@ if (isset($_GET['like']) || isset($_GET['artista']) || isset($_GET['search'])){
 
 ?>
 
-<form action="index.php" method="get">
-
+<form id="index" action="index.php" method="post">
+	
 	<div data-role="page" class="page right" id="home">
 		<div class="app">
 			<!-- boton del menu -->
@@ -138,7 +138,6 @@ if (isset($_GET['like']) || isset($_GET['artista']) || isset($_GET['search'])){
 						break;
 
 					case 3:
-						//$_GET['search'] = '';
 						$status = 0;
 						buscar($search); 
 						echo '<div class="limpiar" onClick="redireccionar(\'\')">Limpiar</div>';
@@ -181,9 +180,9 @@ if (isset($_GET['like']) || isset($_GET['artista']) || isset($_GET['search'])){
 						<h3>artistas..</h3>
 					</div>
 
-					<div id="songslist"> 
+					<div id="songslist" action="index.php"> 
 						<?php 
-						artistas();
+							artistas();
 						?>
 					</div>
 				</div>
