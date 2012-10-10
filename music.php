@@ -109,7 +109,6 @@ function soloArtista($nombre){
 
 function buscar($busca){
 	$encontro = false;
-	$resultado = 'No se encontro ningun resultado con la busqueda '.$busca;
 
 	for ($i = 0; $i <= 2; $i++){
 		if($i == 0){
@@ -126,8 +125,8 @@ function buscar($busca){
 			if($row['artista'] == $busca || $row['cancion'] == $busca || $row['album'] == $busca){
 				$encontro = true;
 				showArtista($row);
-				}
 			}
+		}
 	}
 	if(!$encontro){
 		echo '<div class="error">
@@ -136,7 +135,6 @@ function buscar($busca){
 		</div>';
 	}
 
-	//muestra el boton para clear
 	//echo '<SCRIPT TYPE="text/javascript">$(".clearMenu").css(\'display\',\'inline-block\');</SCRIPT>';
 	//echo '<SCRIPT TYPE="text/javascript">alert (\'Resultado '.$resultado.' \');</SCRIPT>';
 }
