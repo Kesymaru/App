@@ -10,10 +10,10 @@
 			selector: 'ul#noty_topCenter_layout_container',
 			style: function() {
 				$(this).css({
-					top: 20,
+					top: 75,
 					left: 0,
 					position: 'fixed',
-					width: '310px',
+					width: '100%',
 					height: 'auto',
 					margin: 0,
 					padding: 0,
@@ -33,7 +33,7 @@
 		},
 		css: {
 			display: 'none',
-			width: '310px'
+			width: '100%'
 		},
 		addClass: ''
 	};

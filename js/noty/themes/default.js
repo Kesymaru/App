@@ -45,10 +45,10 @@
 			});
 
 			this.$message.css({
-				fontSize: '13px',
-				lineHeight: '16px',
+				fontSize: '20px',
+				lineHeight: '20px',
 				textAlign: 'center',
-				padding: '8px 10px 9px',
+				padding: '20px 20px',
 				width: 'auto',
 				position: 'relative'
 			});
@@ -94,11 +94,12 @@
 				break;
 				case 'topCenter': case 'center': case 'bottomCenter': case 'inline':
 					this.$bar.css({
-						borderRadius: '5px',
+						borderRadius: '7px',
 						border: '1px solid #eee',
 						boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)"
 					});
-					this.$message.css({fontSize: '13px', textAlign: 'center'});
+					this.$message.css({fontSize: '20px', textAlign: 'center'});
+
 				break;
 				case 'topLeft': case 'topRight':
 				case 'bottomLeft': case 'bottomRight':
