@@ -1,3 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>77Digital</title>
+	<meta charset="utf-8" />
+	<meta id="extViewportMeta" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	
+	<link rel="stylesheet" href="style.css" TYPE="text/css" MEDIA=screen>	
+	<link rel="stylesheet" href="css/jquery.mobile-1.0rc2.min.css" />
+	<link rel="stylesheet" href="css/main.css" />
+
+	<script type="text/javascript" src="js/jquery-1.6.4.min.js"></script>
+	<script type="text/javascript" src="js/jquery.mobile-1.0rc2.min.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+	
+
+</head>
+
+<body>
+
 <?php
 
 require_once ('sdk/facebook.php'); // FACEBOOK PHP SDK v3.2.0-0-g98f2be1  
@@ -65,29 +88,6 @@ if (isset($_GET['like']) || isset($_GET['artista']) || isset($_GET['search'])){
 
 
 ?>
-
-<!DOCTYPE html>
-<html>
-
-<head>
-	<title>77Digital</title>
-	<meta charset="utf-8" />
-	<meta id="extViewportMeta" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-	<meta name="apple-mobile-web-app-capable" content="yes">
-	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
-	
-	<link rel="stylesheet" href="style.css" TYPE="text/css" MEDIA=screen>	
-	<link rel="stylesheet" href="css/jquery.mobile-1.0rc2.min.css" />
-	<link rel="stylesheet" href="css/main.css" />
-
-	<script type="text/javascript" src="js/jquery-1.6.4.min.js"></script>
-	<script type="text/javascript" src="js/jquery.mobile-1.0rc2.min.js"></script>
-	<script type="text/javascript" src="js/app.js"></script>
-	
-
-</head>
-
-<body>
 
 <form action="index.php" method="get">
 
@@ -159,7 +159,7 @@ if (isset($_GET['like']) || isset($_GET['artista']) || isset($_GET['search'])){
 			</div>
 
 			<div class="list">
-				<div class="populares">
+				<div class="populares" onClick="redireccionar('')" >
 					<img src="images/populares.png">
 					<h3> mas populares </h3>
 				</div>
@@ -186,39 +186,12 @@ if (isset($_GET['like']) || isset($_GET['artista']) || isset($_GET['search'])){
 <!-- fin formulario -->
 </form>
 
-
-</body>
-
-</html>
 <?
 
 }
 
 ?>
 
-<!--
-<! html>
-<html xmlns:fb="http://www.facebook.com/2008/fbml">
-  <head>
-    <title>php-sdk 3.0.0</title>
-        <style typ="text/css">
-            html, body { width: 520px;}
-        </style>    
-  </head>
-  <body>
-    <h1>php-sdk</h1>
-    <h3>PHP Session</h3>
-      <?php foreach($_SESSION as $key=>$value){
-          echo '<strong>' . $key . '</strong> => ' . $value . '<br />';
-      }
-      ?>
-      <h3>Tu</h3>
-      <img src="https://graph.facebook.com/<?php echo $user; ?>/picture">
-      <h3>Tus datos (/me)</h3>
-      <?php foreach($user_profile as $key=>$value){
-          echo '<strong>' . $key . '</strong> => ' . $value . '<br />';
-      }
-      ?>
-  </body>
+</body>
+
 </html>
--->
