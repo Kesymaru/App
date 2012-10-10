@@ -29,10 +29,12 @@ if ($user) {
 
 //no logueado -> pagina de logueo\
 $loginpage = "http://www.laquesigue.com/login.php";
+
 if (!$user) {
 	echo "<script type='text/javascript'>top.location.href = '$loginpage';</script>";
     exit;
-}else{ //loqueado
+}else{ 
+//loqueado
 	
 //status 0 -> libre, 1 -> voto, 2-> artista, 3 -> busqueda
 $status = 0;
