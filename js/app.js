@@ -1,5 +1,5 @@
 $(window).load(function() {
- 	
+
 });
 
 $(document).ready(function(){
@@ -185,4 +185,14 @@ function notifica(text) {
   		layout: 'topCenter',
   	});
   	console.log('html: '+n.options.id);
+}
+
+//envia artista
+function artista(artista){
+	
+	$.post( "music.php", {'artista': artista, 'func': '2' }, function(data){
+		$(".sidebar").html(data);
+	});
+
+	move();
 }
