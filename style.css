@@ -10,19 +10,19 @@ body {
 h1{
 	font-family: Tahoma; 
 	font-weight: bold;
-	font-size: 20px;
+	font-size: 15px;
 }
 
 h2{
 	font-family: Tahoma; 
 	font-weight: bold;
-	font-size: 18px;
+	font-size: 12px;
 }
 
 h3{
 	font-family: Tahoma; 
 	font-weight: normal;
-	font-size: 14px;
+	font-size: 10px;
 }
 
 p{
@@ -164,7 +164,7 @@ p{
 	margin-top: 15px;
 }
 
-.content .vote h3{
+.content .vote h1 {
 	display: block;
 	float: left;
 	font-weight: normal;
@@ -192,7 +192,7 @@ p{
 	margin-top: 15px;
 }
 
-.list .populares h3 {
+.list .populares h1 {
 	display: block;
 	float: left;
 	font-weight: normal;
@@ -241,15 +241,14 @@ p{
 	margin-top: 15px;
 }
 
-.list .songs #songs h3 {
+.list .songs #songs h1 {
 	color: #76c2ec;
 	display: block;
 	float: left;
-	font-weight: normal;
+	font-weight: bold;
 	margin-top: 10px;
 	margin-left: 20px;
 	margin-bottom: 10px;
-	font-size: 20px;
 }
 
 
