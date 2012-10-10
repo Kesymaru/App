@@ -3,28 +3,8 @@ $(window).load(function() {
 });
 
 $(document).ready(function(){
-	var menuStatus;
-	var ancho = $(".cover").width() * 0.60;
-	$('.imageCover').css('width',ancho);
 
-	/*$('.showMenu').click(function(){
-		if(menuStatus != true){				
-			$(".ui-page-active").animate({
-				marginLeft: "80%",
-		  	}, 300, function(){menuStatus = true});
-		  	$(".content").css('height','100%');
-		  	$(".content").fadeIn();
-		  //return false;
-		  } else {
-			$(".ui-page-active").animate({
-				marginLeft: "0px",
-		  	}, 300, function(){menuStatus = false});
-			$(".content").css('height','0');
-			$(".content").fadeOut(10);
-			//return false;
-		  }
-	});*/
-	
+	responsitive();
 
 	$('.pages').live("swipeleft", function(){
 		if (menuStatus){
@@ -78,11 +58,7 @@ $(document).ready(function(){
 
 	//responsitive para el cover
 	$(window).resize(function() {
-		var ancho = $(".cover").width() * 0.60;
-		//var ancho = $(".menuicon").width() * 0.60;
-
-    	$(window).width() < $('.imageCover').css('width',ancho);
-    	//location.reload();
+		responsitive();
 	});
 
 	//actualiza automaticamente los resultados
@@ -174,7 +150,7 @@ function redireccionar(link){
 function facebook(u,i,d){
 	var t = 'La Que Sigue';
 	window.open('http://fb-share-control.com?u='+u+'&amp;t='+t+'&amp;i='+i+'&amp;d='+d,'sharer','toolbar=0,status=0,width=800,height=400');
-        return false;
+    return false;
 }
 
 function notifica(text) {
@@ -195,4 +171,14 @@ function artista(artista){
 	});
 
 	move();
+	responsitive();
+	setTimeout(function (){
+		$('html, body').animate({scrollTop:0}, 'slow');
+	},500);
+}
+
+//para imagenes adaptables
+function responsitive(){
+	var ancho = $(".cover").width() * 0.60;
+	$('.imageCover').css('width',ancho);
 }
