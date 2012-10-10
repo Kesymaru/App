@@ -14,8 +14,13 @@
 
 	<script type="text/javascript" src="js/jquery-1.6.4.min.js"></script>
 	<script type="text/javascript" src="js/jquery.mobile-1.0rc2.min.js"></script>
-	<script type="text/javascript" src="js/app.js"></script>
 	
+	<!-- notificaciones -->
+	<script type="text/javascript" src="js/noty/jquery.noty.js"></script>
+	<script type="text/javascript" src="js/noty/layouts/topCenter.js"></script>
+	<script type="text/javascript" src="js/noty/themes/default.js"></script>
+
+	<script type="text/javascript" src="js/app.js"></script>
 
 </head>
 
@@ -58,6 +63,12 @@ if (!$user) {
     exit;
 }else{ 
 //loqueado
+
+//mensaje de bienvenida
+if( !isset($_SESSION['bienvenida']) ){
+	echo '<script type="text/javascript">notifica("Bienvenido '.$_SESSION['nombre'].'")</script>';
+	$_SESSION['bienvenida'] = true; //ha sido notificado
+}
 	
 //status 0 -> libre, 1 -> voto, 2-> artista, 3 -> busqueda
 $status = 0;
