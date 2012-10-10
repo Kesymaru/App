@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<title>Test La Que Sigue</title>
+
+<!-- CARGA DE SIMPLE FACEBOOK GRAPH -->
+<script src="simpleFacebookGraph.js"></script>
+
+<!-- SCRIPTS PROPIOS QUE USA ESTA PÁGINA -->
+<script>
+
+// Cuando la pagina carga miramos si ya hay un usuario identificado.
+fb.ready(function(){ 
+  if (fb.logged)
+  {
+    // Cambiamos el link de identificarse por el nombre y la foto del usuario.
+    html = "<p>Hola " + fb.user.name + "</p>";
+    html += '<p><img src="' + fb.user.picture + '"/></p>';
+    html += '<p><a href="#" onclick="fb.logout(); return false;">Salir</a></p>';
+    document.getElementById("conectar_facebook").innerHTML = html;
+  }
+});
+
+
+// Funcion para logarse con Facebook.
+function login() {
+  fb.login(function(){ 
+    if (fb.logged) {
+      // Cambiamos el link de identificarse por el nombre y la foto del usuario.
+      html = "<p>Hola " + fb.user.name + "</p>";
+      html += "<p><img src='" + fb.user.picture + "'/></p>";
+      document.getElementById("conectar_facebook").innerHTML = html;
+    } else {
+      alert("No se pudo identificar al usuario");
+    }
+  })
+};
+
+// Funcion para publicar un mensaje en tu muro
+var publish = function () {
+    fb.publish({
+      message : "Prueba de publicacion desde otro sitio",
+      picture : "http://www.laquesigue.com/images/album.png",
+      link : "http://www.laquesigue.com",
+      name : "La Que Sigue",
+      description : "Una prueba de la integracion de la app con facebook"
+    },function(published){ 
+      if (published)
+       alert("publicado!");
+      else
+       alert("No publicado :(, seguramente porque no estas identificado o no diste permisos");
+    });  
+}
+</script>
+
+
+</head>
+<body>
+
+  <div id="conectar_facebook">
+    <a href="#" onclick="login(); return false;">Contectarse a Facebook</a>
+  </div>
+
+  <br/><br/>
+
+  <p><a href="#" onclick="publish(); return false;">Publicar algo en tu muro</p>
+
+</body>
+</html>
