@@ -168,6 +168,7 @@ function showArtista($row){
 						<img src="images/like.png">';
 		//id para el jquery
 		echo '<img src="images/masDesactivo.png"  class="mas" id="boton'.$row['id'].'">';
+		
 		//votos
 		echo '<p id="votos'.$row['id'].'">'.votos($row['id']).' votos</p>
 				</div>
