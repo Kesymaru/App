@@ -14,15 +14,21 @@ $conecta = mysql_connect($host,$user,$pass);
 
 mysql_select_db($tablename, $conecta);
 
-if(isset($_GET['func'])){
-	switch($_GET['func']) {
+if(isset($_POST['func'])){
+	switch($_POST['func']) {
 	  case '1':
 	    album();
+	    break;
+	  case '2':
+	    if( isset($_POST['artista']) ){
+	    	soloArtista($_POST['artista']);
+	    }
 	    break;
 	  default:
 	    // Do nothing?
 	}
 }
+
 
 //para el home. muestra los albums ordenados por la cantidad de votos desendientemente
 function album(){
@@ -69,7 +75,7 @@ function artistas(){
 
 	while($row = mysql_fetch_array($resultado)){
 		
-		echo '<h2 onClick="redireccionar( \'?artista='.$row['artista'].' \' )">'.$row['artista'].'</h2>';
+		echo '<h2 onClick="artista( \''.$row['artista'].'\' )">'.$row['artista'].'</h2>';
 	}
 }
 
@@ -88,7 +94,7 @@ function votos($idCancion){
 
 //muestra las canciones de un solo artista
 function soloArtista($nombre){
-	//echo '<SCRIPT TYPE="text/javascript">alert (\'Mostrando canciones de '.$_GET['artista'].'\');</SCRIPT>';
+	//echo '<SCRIPT TYPE="text/javascript">alert (\'Mostrando canciones de '.$nombre.'\');</SCRIPT>';
 	$error = true;
 	$sql = "SELECT * FROM musica WHERE artista LIKE '%$nombre%' LIMIT 0, 30";
 	$resultado = mysql_query($sql);
