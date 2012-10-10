@@ -119,6 +119,7 @@ if (isset($_GET['like']) || isset($_GET['artista']) || isset($_GET['search'])){
 
 					case 2:
 						soloArtista($artista);
+						echo '<div class="limpiar" onClick="redireccionar(\'\')">Limpiar</div>';
 						$status = 0;
 						break;
 
@@ -126,6 +127,7 @@ if (isset($_GET['like']) || isset($_GET['artista']) || isset($_GET['search'])){
 						//$_GET['search'] = '';
 						$status = 0;
 						buscar($search); 
+						echo '<div class="limpiar" onClick="redireccionar(\'\')">Limpiar</div>';
 						break;
 				}
 			?>
