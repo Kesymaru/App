@@ -128,17 +128,12 @@ function buscar($busca){
 				showArtista($row);
 				}
 			}
-			if($encontro == true){
-				echo '<div class="limpiar" onClick="redireccionar(\'\')">Limpiar</div>';
-				break;
-			}
 	}
 	if(!$encontro){
 		echo '<div class="error">
 			
 				<h1>No se hay resultados para <br>'.$busca.'</h1>
 		</div>';
-		echo '<div class="limpiar" onClick="redireccionar(\'\')">Limpiar</div>';
 	}
 
 	//muestra el boton para clear
