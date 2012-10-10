@@ -1,6 +1,5 @@
 $(window).load(function() {
  	
- 	
 
 });
 
@@ -27,8 +26,6 @@ $(document).ready(function(){
 		  }
 	});*/
 	
-    
-
 
 	$('.pages').live("swipeleft", function(){
 		if (menuStatus){
@@ -179,4 +176,14 @@ function facebook(u,i,d){
 	var t = 'La Que Sigue';
 	window.open('http://fb-share-control.com?u='+u+'&amp;t='+t+'&amp;i='+i+'&amp;d='+d,'sharer','toolbar=0,status=0,width=800,height=400');
         return false;
+}
+
+function notifica(text) {
+  	var n = noty({
+  		text: text,
+  		type: 'alert',
+    	dismissQueue: true,
+  		layout: 'topCenter',
+  	});
+  	console.log('html: '+n.options.id);
 }
