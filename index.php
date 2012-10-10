@@ -97,8 +97,9 @@ if (isset($_GET['like']) || isset($_GET['artista']) || isset($_GET['search'])){
 				<img src="images/appmenu.png" class="showMenu" onClick="move()" id="menu0">
 			</div>
 			<!-- logo -->
-			<img class="logo" src="images/logo.png" onClick="redireccionar('')">
-
+			<a href="http://77digital.com/" target="_blank">
+				<img class="logo" src="images/logo.png" onClick="redireccionar('')">
+			</a>
 		</div>
 		
 		<div class="sidebar">
