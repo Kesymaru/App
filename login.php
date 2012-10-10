@@ -77,10 +77,8 @@ function grabar($user_profile){
 	
 	//graba en la base de datos
 	if( !mysql_query($sql) ){
-		//echo "<script type='text/javascript'> alert('Grabado'); </script>";
+		//error
 		die('Error: ' . mysql_error());
-	}else{
-		//echo "<script type='text/javascript'> alert('Grabado'); </script>";
 	}
 }
 
