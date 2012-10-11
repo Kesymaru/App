@@ -118,20 +118,22 @@ function buscar($busca){
 
 	for ($i = 0; $i <= 2; $i++){
 		if($i == 0){
-			$sql = mysql_query("SELECT * FROM musica WHERE artista LIKE '%$busca%' LIMIT 0, 30 ");
+			$sql = mysql_query("SELECT * FROM musica WHERE artista LIKE '%".$busca."%' LIMIT 0, 30 ");
 		}
 		if($i == 1){
-			$sql = mysql_query("SELECT * FROM musica WHERE cancion LIKE '%$busca%' LIMIT 0, 30 ");
+			$sql = mysql_query("SELECT * FROM musica WHERE cancion LIKE '%".$busca."%' LIMIT 0, 30 ");
 		}
 		if($i == 2){
-			$sql = mysql_query("SELECT * FROM musica WHERE album LIKE '%$busca%' LIMIT 0, 30 ");
+			$sql = mysql_query("SELECT * FROM musica WHERE album LIKE '%".$busca."%' LIMIT 0, 30 ");
 		}
 
 		while ($row = mysql_fetch_array($sql)){
+			
 			if($row['artista'] == $busca || $row['cancion'] == $busca || $row['album'] == $busca){
 				$encontro = true;
 				showArtista($row);
 			}
+
 		}
 	}
 	if(!$encontro){
@@ -141,14 +143,14 @@ function buscar($busca){
 		</div>';
 	}
 
-	//echo '<SCRIPT TYPE="text/javascript">$(".clearMenu").css(\'display\',\'inline-block\');</SCRIPT>';
+	
 	//echo '<SCRIPT TYPE="text/javascript">alert (\'Resultado '.$resultado.' \');</SCRIPT>';
 }
 
 
 //muestra formatedo el artista, requiere el arreglo de la consulta de la tabla de la base de datos
 function showArtista($row){
-		echo '<div class="album" id="album'.$row['id'].'" onClick="menuVotar('.$row['id'].')">
+		echo '<div class="album" id="album'.$row['id'].'" >
 				<div class="cover">';
 		//cover
 		if ($row['cover'] == 'default'){
@@ -171,9 +173,9 @@ function showArtista($row){
 
 		echo '</div>
 					<div class="infovotos">
-						<img src="images/like.png">';
+						<img src="images/like.png" onClick="facebook(\''.$row['cancion'].'\')" >';
 		//id para el jquery
-		echo '<img src="images/masDesactivo.png"  class="mas" id="boton'.$row['id'].'">';
+		//echo '<img src="images/masDesactivo.png"  class="mas" id="boton'.$row['id'].'">';
 		
 		//votos
 		echo '<p id="votos'.$row['id'].'">'.votos($row['id']).' votos</p>
