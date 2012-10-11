@@ -147,10 +147,22 @@ function redireccionar(link){
 }
 
 //para publicar en facebook
-function facebook(u,i,d){
-	var t = 'La Que Sigue';
-	window.open('http://fb-share-control.com?u='+u+'&amp;t='+t+'&amp;i='+i+'&amp;d='+d,'sharer','toolbar=0,status=0,width=800,height=400');
-    return false;
+function facebook(cancion) {
+    fb.publish({
+      message : "Voté en www.laquesigue.com para que Kurt Dyer toque "+cancion+".",
+      picture : "http://www.laquesigue.com/images/album.png",
+      link : "http://www.laquesigue.com",
+      name : "La Que Sigue",
+      description : "Vota en www.laquesigue.com para que Kurt Dyer toque tu cancion favorita. Patrocinado por 77Digital"
+    },function(published){ 
+      
+      if (published)
+        //alert("publicado!");
+   		notifica('Se ha realizado tu voto.<br/>'+cancion)
+      else
+        //alert("No publicado :(, seguramente porque no estas identificado o no diste permisos");
+       	notifica("Ocurrio un error :(<br/>No se ha publicado.<br/>Posiblemente por no diste permisos.")
+    });  
 }
 
 function notifica(text) {
