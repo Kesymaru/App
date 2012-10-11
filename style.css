@@ -236,7 +236,7 @@ p{
 
 .list .songs #songs img {
 	float: right;
-	height: 20px;
+	height: 15px;
 	margin-right: 20px;
 	margin-top: 15px;
 }
@@ -448,23 +448,6 @@ p{
 	vertical-align: middle;
 	color: #fff;
 }
-
-/* boton tweet */
-#custom-tweet-button a {
-    display: block;
-    padding: 0px;
-    border: 0px solid transparent;
-    background-color: transparent;
-    color: transparent;
- }
-
- #custom-tweet-button iframe{
- 	display: inline-block;
- 	float: left;
- 	margin-right: -60px;
- 	margin-top: 15px;
- 	opacity: 0;
- }
 
  /* errores */
 
