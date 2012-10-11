@@ -21,7 +21,8 @@
 	<script type="text/javascript" src="js/noty/themes/default.js"></script>
 
 	<script type="text/javascript" src="js/app.js"></script>
-
+	<!-- para publicar en facebook -->
+	<script src="js/simpleFacebookGraph.js"></script>
 </head>
 
 <body>
@@ -77,21 +78,16 @@ $artista = '';
 $search = '';
 
 //envio
-if (isset($_POST['like']) || isset($_POST['artista']) || isset($_POST['search'])){
+if (isset($_POST['like']) || isset($_POST['search'])){
 	
 	if(isset($_POST['like'])){
 		$like = $_POST['like'];
 		$status = 1;
 		//echo '<SCRIPT TYPE="text/javascript">alert (\'Voto ha '.$_POST['like'].'\');</SCRIPT>';
 	}
-	if(isset($_POST['artista'])){
-		$artista = $_POST['artista'];
-		$status = 2;
-		//echo '<SCRIPT TYPE="text/javascript">alert (\'Artista escojido '.$_POST['artista'].'\');</SCRIPT>';
-	}
 	if(isset($_POST['search']) && $_POST['search'] != '' ){
 		$search = $_POST['search'];
-		$status = 3;
+		$status = 2;
 		//echo '<SCRIPT TYPE="text/javascript">alert (\'Buscando '.$_POST['search'].'\');</SCRIPT>';
 	}
 	//echo '<SCRIPT TYPE="text/javascript">alert (\'Status '.$status.'\');</SCRIPT>';
@@ -101,7 +97,7 @@ if (isset($_POST['like']) || isset($_POST['artista']) || isset($_POST['search'])
 ?>
 
 <form id="index" action="index.php" method="post">
-	
+
 	<div data-role="page" class="page right" id="home">
 		<div class="app">
 			<!-- boton del menu -->
@@ -132,12 +128,6 @@ if (isset($_POST['like']) || isset($_POST['artista']) || isset($_POST['search'])
 						break;
 
 					case 2:
-						soloArtista($artista);
-						echo '<div class="limpiar" onClick="redireccionar(\'\')">Limpiar</div>';
-						$status = 0;
-						break;
-
-					case 3:
 						$status = 0;
 						buscar($search); 
 						echo '<div class="limpiar" onClick="redireccionar(\'\')">Limpiar</div>';
@@ -165,19 +155,19 @@ if (isset($_POST['like']) || isset($_POST['artista']) || isset($_POST['search'])
 
 			<div class="vote">	
 				<img src="images/like.png">
-				<h3>vote</h3>
+				<h1>vote</h1>
 			</div>
 
 			<div class="list">
 				<div class="populares" onClick="redireccionar('')" >
 					<img src="images/populares.png">
-					<h3> mas populares </h3>
+					<h1> mas populares </h1>
 				</div>
 				<div class="songs">
 
 					<div id="songs">
 						<img src="images/dropdown.png" id="dropdown">
-						<h3>artistas..</h3>
+						<h1>artistas..</h1>
 					</div>
 
 					<div id="songslist" action="index.php"> 
