@@ -78,38 +78,6 @@ $(document).ready(function(){
 
 });	
 
-//para cambiar la imagen del boton
-function menuVotar(id){
-
-	if ($("#"+id).css('display') == 'block'){
-		$("#"+id).css('display','none');
-		$("#"+id).fadeOut();
-
-		$("#boton"+id).attr('src','images/masDesactivo.png');
-		$("#boton"+id).fadeIn();
-
-		$("#album"+id).css({
-			'background-color': '#404040',
-			'border-bottom': '1px solid rgba(199, 199, 199, 0.5)',
-		});
-		
-	}else{
-		$("#"+id).css({
-			'display'      : 'block',
-			'border-bottom': '1px solid rgba(199, 199, 199, 0.5)',
-		});
-		$("#"+id).fadeIn();
-
-		$("#boton"+id).attr('src','images/masActivo.png');
-		$("#boton"+id).fadeIn();
-
-		$("#album"+id).css({
-			'background-color': 'rgba(0, 150, 226, 0.5)',
-			'border-bottom': '1px solid rgba(199, 199, 199, 0.5)',
-		});
-	}
-}
-
 //muestra el menu
 function move(){
 	var menuStatus;
@@ -147,8 +115,8 @@ function redireccionar(link){
 }
 
 //para publicar en facebook
-function facebook(cancion) {
-    fb.publish({
+function facebook(cancion, artista) {
+    /*fb.publish({
       message : "Voté en www.laquesigue.com para que Kurt Dyer toque "+cancion+".",
       picture : "http://www.laquesigue.com/images/album.png",
       link : "http://www.laquesigue.com",
@@ -158,21 +126,46 @@ function facebook(cancion) {
       
       if (published)
         //alert("publicado!");
-   		notifica('Se ha realizado tu voto.<br/>'+cancion)
+   		notifica('Se ha realizado tu voto.<br/>'+cancion+'<br/>'+artista);
       else
         //alert("No publicado :(, seguramente porque no estas identificado o no diste permisos");
-       	notifica("Ocurrio un error :(<br/>No se ha publicado.<br/>Posiblemente por no diste permisos.")
-    });  
+       	notifica("Ocurrio un error :(<br/>No se ha publicado.<br/>Posiblemente por no diste permisos.");
+    }); */ 
+	notificaE('Se ha realizado tu voto.<br/>'+cancion+'<br/>'+artista);		
 }
 
+//usa noty (jquery plugin) para notificar 
 function notifica(text) {
   	var n = noty({
   		text: text,
   		type: 'alert',
     	dismissQueue: true,
   		layout: 'topCenter',
+  		closeWith: ['click'], // ['click', 'button', 'hover']
   	});
   	console.log('html: '+n.options.id);
+  	
+  	//tiempo para desaparecerlo solo 
+  	setTimeout(function (){
+		n.close();
+	},3000);
+}
+
+//notifica errores o warnings
+function notificaE(text) {
+  	var n = noty({
+  		text: text,
+  		type: 'error',
+    	dismissQueue: true,
+  		layout: 'topCenter',
+  		closeWith: ['click'], // ['click', 'button', 'hover']
+  	});
+  	console.log('html: '+n.options.id);
+  	
+  	//tiempo para desaparecerlo solo 
+  	setTimeout(function (){
+		n.close();
+	},5000);
 }
 
 //envia artista
@@ -193,4 +186,26 @@ function artista(artista){
 function responsitive(){
 	var ancho = $(".cover").width() * 0.60;
 	$('.imageCover').css('width',ancho);
+}
+
+//para realizar el voto 
+function votar(id, artista, cancion){
+
+	//vota
+	if( $.post( "music.php", {'id': id, 'func': '3' } ) ){
+		facebook(cancion, artista); //publica en facebook
+	}else{
+		notificaE('Ocurrio un error :(<br/>Intentalo de nuevo.');
+	}
+
+	//actualiza el album del artista
+	$.post( "music.php", {'id': id, 'func': '4'}, function(data){
+		if( data.length > 0 ){
+			$("#album"+id+" #votos"+id).html(data);
+			$("#album"+id+" #votos"+id).fadeIn();
+		}else{
+			notificaE('Error al actualizar artista');
+		}
+	});	
+
 }

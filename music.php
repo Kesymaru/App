@@ -19,11 +19,25 @@ if(isset($_POST['func'])){
 	  case '1':
 	    album();
 	    break;
+	  //muestra artista
 	  case '2':
 	    if( isset($_POST['artista']) ){
 	    	soloArtista($_POST['artista']);
 	    }
 	    break;
+	  //votar
+	  case '3':
+	    if( isset($_POST['id']) ){
+	    	//realiza el voto
+	    	voto($_POST['id']);
+	    }
+	    break;
+	  //actualizar votos del album
+	  case '4':
+	    if( isset($_POST['id']) ){
+	    	//realiza el voto
+	    	votosTotal($_POST['id']);
+	    }
 	  default:
 	    // Do nothing?
 	}
@@ -92,9 +106,22 @@ function votos($idCancion){
 	}
 }
 
+//para AJAX, devuelve los votos ocupa id de la cancion
+function votosTotal($idCancion){
+	$sql = 'SELECT * FROM votos WHERE cancion = '.$idCancion;
+	$resultado = mysql_query($sql);
+	$resultado = mysql_fetch_array($resultado);
+	
+	if(isset($resultado['votos'])){
+		echo $resultado['votos'] . ' votos';
+	}else{
+		return '0';
+	}
+}
+
 //muestra las canciones de un solo artista
 function soloArtista($nombre){
-	//echo '<SCRIPT TYPE="text/javascript">alert (\'Mostrando canciones de '.$nombre.'\');</SCRIPT>';
+
 	$error = true;
 	$sql = "SELECT * FROM musica WHERE artista LIKE '%$nombre%' LIMIT 0, 30";
 	$resultado = mysql_query($sql);
@@ -173,7 +200,7 @@ function showArtista($row){
 
 		echo '</div>
 					<div class="infovotos">
-						<img src="images/like.png" onClick="facebook(\''.$row['cancion'].'\')" >';
+<img src="images/like.png" onClick="votar( \''.$row['id'].'\',\''.str_replace("'","",$row['artista']).'\',\''.str_replace("'","",$row['cancion']).'\')" /> ';
 		//id para el jquery
 		//echo '<img src="images/masDesactivo.png"  class="mas" id="boton'.$row['id'].'">';
 		
@@ -182,37 +209,6 @@ function showArtista($row){
 				</div>
 				</div>
 			</div>';
-
-		//menu de votar
-		/*echo '<div class="menuvotar" id="'.$row['id'].'">
-				<!-- votar -->
-				<div class="like">
-						<img src="images/votalike.png" name="like" onClick="redireccionar(\'?like='.$row['id'].' \')">
-						<p>votar</p>
-					
-				</div>
-				<!-- twitter -->
-				<div class="tweet" id="custom-tweet-button">
-					<a href="http://twitter.com/intent/tweet?text=Voté en www.laquesigue.com para que @kurtdyer toque '.$row['cancion'].' en #transcyberiano. Patrocinado por @somos77" class="twitter-share-button" data-url="www.laquesigue.com" data-lang="es" data-related="anywhereTheJavascriptAPI" data-count="none">
-						
-					</a>
-					<img src="images/tweet.png">
-
-					<p>tweet</p>
-				</div>
-				<!-- facebook 
-				<div class="facebook">
-				<a href="http://fb-share-control.com?u=http://www.laquesigue.com?artista='.$row['cancion'].'&amp;
-				t=La Que Sigue&amp;
-				i=http://www.laquesigue.com/images/album.png &amp;
-				d=Voté en www.laquesigue.com para que Kurt Dyer toque '.$row['artista'].' en http://www.transcyberiano.com/. Patrocinado por 77Digital" target="_black">
-
-					<img alt="Facebook" src="images/facebook.png">
-				</a>
-					<p>Facebook</p>
-				</div>-->
-
-			</div>';*/
 }
 
 function contador($numero, $id){
