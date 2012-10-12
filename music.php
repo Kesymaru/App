@@ -4,6 +4,7 @@
 	Conecta la base de datos, procesa los datos y los muestra
 
 */
+session_start();
 
 $host      =    "localhost";
 $user      =    "laqueusr";
@@ -38,6 +39,13 @@ if(isset($_POST['func'])){
 	    	//realiza el voto
 	    	votosTotal($_POST['id']);
 	    }
+	    break;
+	  case '5':
+	    if( isset($_POST['id']) ){
+	    	//realiza el voto
+	    	usuarioVoto($_POST['id']);
+	    }
+	    break;
 	  default:
 	    // Do nothing?
 	}
@@ -77,10 +85,16 @@ function voto($idCancion){
 	$sql = 'UPDATE votos SET votos ='.$votos.' WHERE cancion ='.$idCancion;
 
 	mysql_query($sql);
-	//echo '<SCRIPT TYPE="text/javascript">alert(\'El voto se ha echo.\');</SCRIPT>';
-	//$link = '';
-	echo '<SCRIPT TYPE="text/javascript">window.location = \"index.php\";</SCRIPT>';
+
+	//registra voto del usuario
+	$sql = "INSERT INTO votosUsuarios (id, cancion, tiempo) VALUES ('".$_SESSION['id']."', '".$idCancion."', '".time()."')";
+	if(mysql_query($sql)){
+		echo 'Guardado';
+	}else{
+		echo "error al guardar revisar linea 90 music.php";
+	}
 }
+
 
 //muestra todos la lista artistas agrupando los artistas para hacer una lista
 function artistas(){
@@ -200,7 +214,7 @@ function showArtista($row){
 
 		echo '</div>
 					<div class="infovotos">
-<img src="images/like.png" onClick="votar( \''.$row['id'].'\',\''.str_replace("'","",$row['artista']).'\',\''.str_replace("'","",$row['cancion']).'\')" /> ';
+						<img src="images/like.png" onClick="votar( \''.$row['id'].'\',\''.str_replace("'","",$row['artista']).'\',\''.str_replace("'","",$row['cancion']).'\')" /> ';
 		//id para el jquery
 		//echo '<img src="images/masDesactivo.png"  class="mas" id="boton'.$row['id'].'">';
 		
@@ -217,5 +231,18 @@ function contador($numero, $id){
 			$("#contador'.$id.'").css("display","inline-block");
 		</SCRIPT>';
 }
+
+//determina si el usuario ya voto por la cancion
+function usuarioVoto($idCancion){
+	$sql = 'SELECT * FROM votosUsuarios WHERE id = '.$_SESSION['id'].' AND cancion = '.$idCancion;
+
+	$sql = mysql_query($sql);
+
+	if( mysql_fetch_array($sql)  ){ 
+		//no ha votado
+		echo 'Ya voto';
+	}
+}
+
 
 ?>
