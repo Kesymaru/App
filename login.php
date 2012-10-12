@@ -47,7 +47,8 @@ if ( !$user ) {
 }else{
 	//logueado
 	session($user_profile); 
-	usuario($user_profile); 
+	usuario($user_profile);
+	home(); 
 }
 
 //revisa si exise el usuario
@@ -104,34 +105,30 @@ echo '
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
 	
-	<link rel="stylesheet" href="style.css" TYPE="text/css" MEDIA=screen>	
-	<link rel="stylesheet" href="css/jquery.mobile-1.0rc2.min.css" />
-	<link rel="stylesheet" href="css/main.css" />
+	<link rel="stylesheet" href="css/login.css" TYPE="text/css" MEDIA=screen>	
 
-	<script type="text/javascript" src="js/jquery-1.6.4.min.js"></script>
-	<script type="text/javascript" src="js/jquery.mobile-1.0rc2.min.js"></script>
-	
 	<!-- notificaciones -->
 	<script type="text/javascript" src="js/noty/jquery.noty.js"></script>
 	<script type="text/javascript" src="js/noty/layouts/topCenter.js"></script>
 	<script type="text/javascript" src="js/noty/themes/default.js"></script>
-
-	<script type="text/javascript" src="js/app.js"></script>
-	<!-- para publicar en facebook -->
-	<script type="text/javascript" src="js/simpleFacebookGraph.js"></script>
+	
+	<!-- para redireccionar al logueo de facebook -->
 	<script type="text/javascript">
-	function loguearse(){
-		top.location.href = \''.$loginUrl.'\';
-	}
+		function loguearse(){
+			top.location.href = \''.$loginUrl.'\';
+		}
 	</script>
+
 </head>
 
 <body>
+
 	<div class="mensajeLogin">
 		<h1>Ingresa con facebook</h1>
-		<p>Para ingresar se requiere cuenta de facebook<p>
+		<h2>Para ingresar se requiere cuenta de facebook</h2>
 		<button onClick="loguearse()">Ingresar con facebook</button>
 	</div>
+
 </body>
 
 </html>';
