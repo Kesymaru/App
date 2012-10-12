@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -119,6 +120,7 @@ if (isset($_POST['like']) || isset($_POST['search'])){
 					case 0:
 						album();
 						$status = 0;
+						echo '<div class="limpiar" onClick="sube(\'\')">Subir</div>';
 						break;
 					
 					case 1:
