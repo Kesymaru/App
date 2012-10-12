@@ -9,7 +9,7 @@
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
 	
-	<link rel="stylesheet" href="style.css" TYPE="text/css" MEDIA=screen>	
+	<link rel="stylesheet" href="css/style.css" TYPE="text/css" MEDIA=screen>	
 	<link rel="stylesheet" href="css/jquery.mobile-1.0rc2.min.css" />
 	<link rel="stylesheet" href="css/main.css" />
 
