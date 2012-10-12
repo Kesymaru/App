@@ -130,12 +130,12 @@
 
 			switch (this.options.type) {
 				case 'alert': case 'notification':
-					this.$bar.css({backgroundColor: '#FFF', borderColor: '#CCC', color: '#444'}); break;
+					this.$bar.css({backgroundColor: 'rgba(0,154,224,0.7)', borderColor: '#333', color: '#FFF', fontWeight: 'bold'}); break;
 				case 'warning':
 					this.$bar.css({backgroundColor: '#FFEAA8', borderColor: '#FFC237', color: '#826200'});
 					this.$buttons.css({borderTop: '1px solid #FFC237'}); break;
 				case 'error':
-					this.$bar.css({backgroundColor: 'red', borderColor: 'darkred', color: '#FFF'});
+					this.$bar.css({backgroundColor: 'rgba(255,0,0,0.7)', borderColor: 'darkred', color: '#FFF', fontWeight: 'bold'});
 					this.$message.css({fontWeight: 'bold'});
 					this.$buttons.css({borderTop: '1px solid darkred'}); break;
 				case 'information':
