@@ -116,7 +116,7 @@ function redireccionar(link){
 
 //para publicar en facebook
 function facebook(cancion, artista) {
-    /*fb.publish({
+    fb.publish({
       message : "Voté en www.laquesigue.com para que Kurt Dyer toque "+cancion+".",
       picture : "http://www.laquesigue.com/images/album.png",
       link : "http://www.laquesigue.com",
@@ -130,8 +130,7 @@ function facebook(cancion, artista) {
       else
         //alert("No publicado :(, seguramente porque no estas identificado o no diste permisos");
        	notifica("Ocurrio un error :(<br/>No se ha publicado.<br/>Posiblemente por no diste permisos.");
-    }); */ 
-	notificaE('Se ha realizado tu voto.<br/>'+cancion+'<br/>'+artista);		
+    });
 }
 
 //usa noty (jquery plugin) para notificar 
@@ -151,7 +150,7 @@ function notifica(text) {
 	},3000);
 }
 
-//notifica errores o warnings
+//notifica errores
 function notificaE(text) {
   	var n = noty({
   		text: text,
@@ -165,7 +164,7 @@ function notificaE(text) {
   	//tiempo para desaparecerlo solo 
   	setTimeout(function (){
 		n.close();
-	},5000);
+	},3000);
 }
 
 //envia artista
@@ -176,10 +175,11 @@ function artista(artista){
 	});
 
 	move();
-	responsitive();
+	
 	setTimeout(function (){
 		$('html, body').animate({scrollTop:0}, 'slow');
 	},500);
+	responsitive();
 }
 
 //para imagenes adaptables
@@ -190,22 +190,41 @@ function responsitive(){
 
 //para realizar el voto 
 function votar(id, artista, cancion){
+    var status = false;
 
-	//vota
-	if( $.post( "music.php", {'id': id, 'func': '3' } ) ){
-		facebook(cancion, artista); //publica en facebook
-	}else{
-		notificaE('Ocurrio un error :(<br/>Intentalo de nuevo.');
-	}
+    //verifica si el usuario no ha votado
+    if($.post( "music.php", {'id': id, 'func': '5'}, function(data){
 
-	//actualiza el album del artista
+    	if( !(data.length > 0) ){
+
+    		if( $.post( "music.php", {'id': id, 'func': '3' } ) ){
+    			facebook(cancion, artista); //publica en facebook
+
+    			actualizaVoto(id);
+    			
+    		}else{
+    			notificaE('Lo sentimos :(<br/>No se realizo el voto<br/>Intentalo de nuevo.');
+    			status = false;
+    		}
+
+    	}else{
+    		notificaE('Lo sentimos :(<br/>Solo puedes votar<br/>1 vez por cancion.');
+    		return;
+    	}
+    }));
+}
+
+function actualizaVoto(id){
 	$.post( "music.php", {'id': id, 'func': '4'}, function(data){
 		if( data.length > 0 ){
 			$("#album"+id+" #votos"+id).html(data);
 			$("#album"+id+" #votos"+id).fadeIn();
-		}else{
-			notificaE('Error al actualizar artista');
 		}
-	});	
+	});
 
+}
+
+//sube 
+function sube(){
+	$('html, body').animate({scrollTop:0}, 'slow');
 }
