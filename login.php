@@ -73,7 +73,7 @@ function usuario($user_profile){
 //graba datos de usuarios en base de datos
 function grabar($user_profile){
 
-	$sql = "INSERT INTO usuarios VALUES ('".$user_profile['first_name']."', '".$user_profile['last_name']."', '".$user_profile['email']."', '".$user_profile['id']."')";
+	$sql = "INSERT INTO usuarios (nombre, apellido, email, id) VALUES ('".$user_profile['first_name']."', '".$user_profile['last_name']."', '".$user_profile['email']."', '".$user_profile['id']."')";
 	
 	//graba en la base de datos
 	if( !mysql_query($sql) ){
@@ -84,6 +84,8 @@ function grabar($user_profile){
 
 //datos de la session
 function session($user_profile){
+	//facebook abre session
+	session_start();
 	$_SESSION['nombre'] = $user_profile['name'];
 	$_SESSION['id'] = $user_profile['id'];
 	$_SESSION['email'] = $user_profile['email'];
