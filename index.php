@@ -23,7 +23,7 @@
 
 	<script type="text/javascript" src="js/app.js"></script>
 	<!-- para publicar en facebook -->
-	<script src="js/simpleFacebookGraph.js"></script>
+	<script type="text/javascript" src="js/simpleFacebookGraph.js"></script>
 </head>
 
 <body>
